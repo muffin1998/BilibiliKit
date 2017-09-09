@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BiliBili Kit</string>
+    <string name="video_list_item_menu_merge">Merge</string>
+    <string name="write_external_storage_denied">Application will not work withdou storage permission granted</string>
+    <string name="merge_video_of">of</string>
+    <string name="merging">Merging...</string>
+    <string name="merge_video">Merging Videos</string>
+    <string name="merge_video_files">files</string>
+    <string name="merge_completed">Merge Completed!</string>
+    <string name="merge_des_path">Destination File:</string>
+    <string name="merge_video_get_segments_info">Getting Segments Infomations...</string>
+    <string name="merge_video_dialog_cancel">Cancel</string>
+    <string name="merge_video_dialog_cancelling">Cancelling...</string>
+    <string name="merge_video_dialog_cancel_success">Cancelled</string>
+    <string name="merge_video_dialog_cancel_fail">Cancell Failed</string>
+    <string name="double_back_exit">Press again to exit</string>
+    <string name="merge_completed_dialog_button_positive">OK</string>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/video_listview_item_padding">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/video_listview_bg">
+        <ImageView
+            android:layout_width="@dimen/video_listview_item_cover_width"
+            android:layout_height="@dimen/video_listview_item_cover_height"
+            android:id="@+id/video_listview_item_cover"
+            android:padding="@dimen/video_listview_item_padding"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/video_listview_item_danmaku_count"
+            android:layout_toRightOf="@id/video_listview_item_cover"
+            android:layout_alignBottom="@id/video_listview_item_cover"
+            android:text="danmaku_count"
+            android:paddingBottom="@dimen/video_listview_item_padding"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/video_listview_item_size"
+            android:layout_above="@id/video_listview_item_danmaku_count"
+            android:layout_toRightOf="@id/video_listview_item_cover"
+            android:text="size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/video_listview_item_title"
+            android:ellipsize="end"
+            android:textSize="@dimen/video_listview_item_title_text"
+            android:maxLines="1"
+            android:textColor="@color/video_listview_item_text"
+            android:layout_toRightOf="@id/video_listview_item_cover"
+            android:layout_above="@id/video_listview_item_size"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/video_listview_item_padding"
+            android:text="title"/>
+
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    }
+]

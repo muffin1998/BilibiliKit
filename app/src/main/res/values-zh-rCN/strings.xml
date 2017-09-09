@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BiliBili 工具箱</string>
+    <string name="video_list_item_menu_merge">合并视频</string>
+    <string name="write_external_storage_denied">没有存储读写权限程序将不会正常工作</string>
+    <string name="merge_video_of">of</string>
+    <string name="merging">正在合并</string>
+    <string name="merge_video">正在合并视频</string>
+    <string name="merge_video_files">个文件</string>
+    <string name="merge_completed">合并完成!</string>
+    <string name="merge_des_path">目标文件:</string>
+    <string name="merge_video_get_segments_info">正在获取视频分段信息...</string>
+    <string name="merge_video_dialog_cancel">取消</string>
+    <string name="merge_video_dialog_cancelling">正在取消...</string>
+    <string name="merge_video_dialog_cancel_success">已取消</string>
+    <string name="merge_video_dialog_cancel_fail">取消失败</string>
+    <string name="double_back_exit">在按一次返回键退出程序</string>
+    <string name="merge_completed_dialog_button_positive">确定</string>
+</resources>

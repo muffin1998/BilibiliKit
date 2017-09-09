@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/video_merge_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/video_merge_progress_dialog_text"
+        android:paddingLeft="@dimen/video_merge_dialog_view_padding"/>
+    <ProgressBar
+        android:id="@+id/video_merge_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/video_merge_dialog_progressbar_height"
+        android:layout_below="@id/video_merge_message"
+        android:layout_marginTop="@dimen/video_merge_dialog_item_margin"
+        android:paddingLeft="@dimen/video_merge_dialog_view_padding"
+        android:paddingRight="@dimen/video_merge_dialog_view_padding"/>
+</RelativeLayout>

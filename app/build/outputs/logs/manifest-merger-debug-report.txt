@@ -1,0 +1,115 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:2:1-27:12
+	package
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:3:5-39
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+application
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:5:5-19:19
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Android\.android\build-cache\e6a93b7c04b682d0827fdfca92a69f376593b157\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Android\.android\build-cache\f99266d8e148e34ec2e8c21856964c845e452ed5\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Android\.android\build-cache\1bbf9151c6f1c50611c3f06604aafdbd57ff37c4\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Android\.android\build-cache\dcf226acd4c6adffc061b2e66c1a2d417b17a719\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Android\.android\build-cache\9003fc4b1ab5f11648d8330de85c7f396abb328b\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Android\.android\build-cache\6d95a485ad04120a533da0db711a416f1c082149\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Android\.android\build-cache\0f9a920dc83fbca80d5324feecb3945656f379f0\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Android\.android\build-cache\9c1cf8e2dc31f65211a1f71a470846f54cf5a912\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Android\.android\build-cache\d7283ebe474bf6baa46631ef7db0c665bb2ab372\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Android\.android\build-cache\2c1d47ea786410e94e51e1902df73c1297542b57\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.just4fan.bilibilikit.activity.VideoListActivity
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:12:19-61
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:16:27-74
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:20:5-79
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:20:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:21:5-80
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:21:22-78
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:22:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:23:5-75
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:23:22-73
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:24:22-64
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:25:5-76
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:25:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:26:5-79
+	android:name
+		ADDED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml:26:22-76
+uses-sdk
+INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Android\.android\build-cache\e6a93b7c04b682d0827fdfca92a69f376593b157\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Android\.android\build-cache\f99266d8e148e34ec2e8c21856964c845e452ed5\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Android\.android\build-cache\1bbf9151c6f1c50611c3f06604aafdbd57ff37c4\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Android\.android\build-cache\dcf226acd4c6adffc061b2e66c1a2d417b17a719\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Android\.android\build-cache\9003fc4b1ab5f11648d8330de85c7f396abb328b\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Android\.android\build-cache\6d95a485ad04120a533da0db711a416f1c082149\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Android\.android\build-cache\0f9a920dc83fbca80d5324feecb3945656f379f0\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Android\.android\build-cache\9c1cf8e2dc31f65211a1f71a470846f54cf5a912\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Android\.android\build-cache\d7283ebe474bf6baa46631ef7db0c665bb2ab372\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Android\.android\build-cache\2c1d47ea786410e94e51e1902df73c1297542b57\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Android\.android\build-cache\e6a93b7c04b682d0827fdfca92a69f376593b157\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\chuiq\AndroidStudioProjects\BiliBiliKit\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Android\.android\build-cache\e6a93b7c04b682d0827fdfca92a69f376593b157\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Android\.android\build-cache\f99266d8e148e34ec2e8c21856964c845e452ed5\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Android\.android\build-cache\1bbf9151c6f1c50611c3f06604aafdbd57ff37c4\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Android\.android\build-cache\dcf226acd4c6adffc061b2e66c1a2d417b17a719\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Android\.android\build-cache\9003fc4b1ab5f11648d8330de85c7f396abb328b\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Android\.android\build-cache\6d95a485ad04120a533da0db711a416f1c082149\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Android\.android\build-cache\0f9a920dc83fbca80d5324feecb3945656f379f0\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Android\.android\build-cache\9c1cf8e2dc31f65211a1f71a470846f54cf5a912\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Android\.android\build-cache\d7283ebe474bf6baa46631ef7db0c665bb2ab372\output\AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Android\.android\build-cache\e6a93b7c04b682d0827fdfca92a69f376593b157\output\AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Android\.android\build-cache\e6a93b7c04b682d0827fdfca92a69f376593b157\output\AndroidManifest.xml:26:9-47

@@ -1,0 +1,4 @@
+#Sun Sep 10 02:51:03 CST 2017
+base.0=C\:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main\\classes.dex
