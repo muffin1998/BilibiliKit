@@ -1,4 +1,4 @@
-#Sun Sep 10 02:44:19 CST 2017
+#Sun Sep 10 18:54:02 CST 2017
 base.0=C\:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1
 renamed.0=classes.dex
 file.0=C\:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1\\classes.dex

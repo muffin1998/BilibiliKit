@@ -20,6 +20,8 @@
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"通过%s分享"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"收起"</string>
     <string name="app_name">BiliBili 工具箱</string>
+    <string name="cover_save_fail">保存失败，检查网络或存储权限</string>
+    <string name="cover_save_success">保存成功</string>
     <string name="double_back_exit">在按一次返回键退出程序</string>
     <string name="merge_completed">合并完成!</string>
     <string name="merge_completed_dialog_button_positive">确定</string>
@@ -30,11 +32,15 @@
     <string name="merge_video_dialog_cancel_success">已取消</string>
     <string name="merge_video_dialog_cancelling">正在取消...</string>
     <string name="merge_video_files">个文件</string>
+    <string name="merge_video_get_segments_fail">获取视频分段信息失败</string>
     <string name="merge_video_get_segments_info">正在获取视频分段信息...</string>
+    <string name="merge_video_no_files">找不到文件</string>
     <string name="merge_video_of">of</string>
+    <string name="merge_video_write_error">写入错误，请检查存储读写权限</string>
     <string name="merging">正在合并</string>
     <string msgid="146198913615257606" name="search_menu_title">"搜索"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="video_list_item_menu_cover_save">保存封面</string>
     <string name="video_list_item_menu_merge">合并视频</string>
     <string name="write_external_storage_denied">没有存储读写权限程序将不会正常工作</string>
 </resources>

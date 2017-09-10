@@ -52,11 +52,19 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
     int requestCode = 0x1;
     long clickedTime = 0;
     String videoPath = "Android//data//tv.danmaku.bili//download";
+    String textMergeNoFile;
+    String textMergeGetSegmentsError;
+    String textMergeWriteError;
+    String textMenuMerge;
+    String textMenuCoverDownload;
     String textgetSegment;
     String textMerge;
+    String textMergeCancelled;
     String textof;
     String textMergeFiles;
     String textDesPath;
+    String textCoverSaveSuccess;
+    String textCoverSaveFail;
 
 
     //Object
@@ -77,8 +85,9 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
     AlertDialog mergeProgressDialog;
 
     //Handler
-    Handler updateCoverHandler;
+    Handler coverUpdateHandler;
     Handler mergeProgessHandler;
+    Handler coverSaveHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +108,7 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
         StaticResouce.cover = BitmapFactory.decodeResource(getResources(), R.drawable.default_cover);
         StaticResouce.cachePath = getExternalCacheDir();
         StaticResouce.videoPath = getExternalFilesDir("video");
+        StaticResouce.coverPath = getExternalFilesDir("cover");
         StaticResouce.doubleClickSpan = 300;
     }
 
@@ -110,18 +120,26 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
     private void Set() {
         video_listview.setAdapter(adpater);
         video_listview.setOnItemClickListener(this);
-        videoList.setHandler(updateCoverHandler);
+        videoList.setHandler(coverUpdateHandler, coverSaveHandler);
         layout.setOnRefreshListener(this);
         mergeProgressDialog.setOnShowListener(this);
     }
 
     private void Init() {
+        textMergeNoFile = getString(R.string.merge_video_no_files);
+        textMergeGetSegmentsError = getString(R.string.merge_video_get_segments_fail);
+        textMergeWriteError = getString(R.string.merge_video_write_error);
+        textMenuMerge = getString(R.string.video_list_item_menu_merge);
+        textMergeCancelled = getString(R.string.merge_video_dialog_cancel_success);
+        textMenuCoverDownload = getString(R.string.video_list_item_menu_cover_save);
         textgetSegment = getString(R.string.merge_video_get_segments_info);
         textMerge = getString(R.string.merge_video);
         textof = getString(R.string.merge_video_of);
         textMergeFiles = getString(R.string.merge_video_files);
         textDesPath = getString(R.string.merge_des_path);
-        updateCoverHandler = new Handler() {
+        textCoverSaveSuccess = getString(R.string.cover_save_success);
+        textCoverSaveFail = getString(R.string.cover_save_fail);
+        coverUpdateHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 if(msg.what == 0)
@@ -133,20 +151,33 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
         mergeProgessHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                Bundle bundle = msg.getData();
-                int progress = bundle.getInt("Progress");
-                if(progress == -2) {
-                    mergeProgressDialog.dismiss();
-                }
-                else if(progress == -1) {
+                if(msg.what == FLV.GET_SEGMENTS_INFO) {
                     progressBar.setProgress(0);
                     progressMessage.setText(R.string.merge_video_get_segments_info);
                 }
+                else if(msg.what == FLV.ERROR_GET_SEGMENTS) {
+                    Toast.makeText(VideoListActivity.this, textMergeGetSegmentsError, Toast.LENGTH_SHORT).show();
+                    mergeProgressDialog.dismiss();
+                }
+                else if(msg.what == FLV.ERROR_WRITE) {
+                    Toast.makeText(VideoListActivity.this, textMergeWriteError, Toast.LENGTH_SHORT).show();
+                    mergeProgressDialog.dismiss();
+                }
+                else if(msg.what == FLV.ERROR_NO_FILES) {
+                    Toast.makeText(VideoListActivity.this, textMergeNoFile, Toast.LENGTH_SHORT).show();
+                    mergeProgressDialog.dismiss();
+                }
+                else if(msg.what == FLV.MERGE_CANCEL) {
+                    Toast.makeText(VideoListActivity.this, textMergeCancelled, Toast.LENGTH_SHORT).show();
+                    mergeProgressDialog.dismiss();
+                }
                 else {
+                    Bundle bundle = msg.getData();
+                    int progress = bundle.getInt("Progress");
                     progressBar.setProgress(progress);
                     int num = bundle.getInt("No");
                     int count = bundle.getInt("Count");
-                    if(progress == 100) {
+                    if (progress == 100) {
                         progressMessage.setText(R.string.merge_completed);
                         mergeProgressDialog.dismiss();
                         new AlertDialog.Builder(VideoListActivity.this).setTitle(R.string.merge_completed).
@@ -161,8 +192,17 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
                                 show();
                     }
                     else
-                        progressMessage.setText(textMerge + " " + num + " " + textof + " " + count + " " +textMergeFiles);
+                        progressMessage.setText(textMerge + " " + num + " " + textof + " " + count + " " + textMergeFiles);
                 }
+            }
+        };
+        coverSaveHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                if(msg.what == 0)
+                    Toast.makeText(VideoListActivity.this, textCoverSaveFail, Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(VideoListActivity.this, textCoverSaveSuccess, Toast.LENGTH_SHORT).show();
             }
         };
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -171,7 +211,9 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
                 setCancelable(false).
                 setNegativeButton(R.string.merge_video_dialog_cancel, null).
                 create();
-        videoList = VideoList.getVideoList(new File(Environment.getExternalStorageDirectory(), videoPath), updateCoverHandler);vlviewItemList = videoList.getVlViewItemList();
+        videoList = VideoList.getVideoList(new File(Environment.getExternalStorageDirectory(), videoPath),
+                coverUpdateHandler,
+                coverSaveHandler);
         vlviewItemList = videoList.getVlViewItemList();
         adpater = new VLViewAdpater(this, vlviewItemList);
     }
@@ -205,28 +247,34 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
             parent_vi = vlviewItemList;
             parent_vl = videoList;
             videoList = item.getVideoList();
-            videoList.setHandler(updateCoverHandler);
+            //videoList.setHandler();
             video_listview.setAdapter(new VLViewAdpater(this, videoList.getVlViewItemList()));
             layout.setRefreshing(false);
         }
         else {
             curClicked = vlviewItemList.get(i);
-            menu = new PopupMenu(this, view, Gravity.CENTER);
-            menu.getMenu().add(R.string.video_list_item_menu_merge);
-            menu.show();
+            menu = new PopupMenu(this, view);
+            menu.getMenu().add(0, 0, 0, textMenuMerge);
+            menu.getMenu().add(0, 1, 1, textMenuCoverDownload);
             menu.setOnMenuItemClickListener(this);
+            menu.show();
         }
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        mergeProgressDialog.show();
-        progressBar = (ProgressBar)mergeProgressDialog.findViewById(R.id.video_merge_progressBar);
-        progressMessage = (TextView)mergeProgressDialog.findViewById(R.id.video_merge_message);
-        flv = new FLV(curClicked.parts_dir, new File(StaticResouce.videoPath, curClicked.title+".flv"));
-        flv.setHandler(mergeProgessHandler);
-        if(flv.init())
+        //Log.d(DEBUG_TAG, item.getItemId() + "");
+        if(item.getOrder() == 0) {
+            mergeProgressDialog.show();
+            progressBar = (ProgressBar) mergeProgressDialog.findViewById(R.id.video_merge_progressBar);
+            progressMessage = (TextView) mergeProgressDialog.findViewById(R.id.video_merge_message);
+            flv = new FLV(curClicked.parts_dir, new File(StaticResouce.videoPath, curClicked.title + ".flv"));
+            flv.setHandler(mergeProgessHandler);
             flv.Merge();
+        }
+        else if(item.getOrder() == 1) {
+            curClicked.coverSave();
+        }
         return true;
     }
 

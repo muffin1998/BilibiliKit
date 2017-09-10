@@ -128,6 +128,10 @@
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\layout\\video_property_dialog.xml",
+        "source": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\src\\main\\res\\layout\\video_listview\\layout\\video_property_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },

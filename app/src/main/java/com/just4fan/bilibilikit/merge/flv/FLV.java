@@ -31,6 +31,12 @@ public class FLV {
 	final static int TAG_AUDIO = 0x8;
 	final static int TAG_VIDEO = 0x9;
 	final static int buf_size = 8192;
+    public final static int ERROR_NO_FILES = -0x1;
+    public final static int ERROR_GET_SEGMENTS = -0x2;
+    public final static int ERROR_WRITE = -0x3;
+    public final static int MERGE_CANCEL = -0x4;
+    public final static int GET_SEGMENTS_INFO =  0x0;
+    public final static int MERGING = 0x1;
 	boolean interrupted = false;
 	File dir;
 	File des;
@@ -61,12 +67,7 @@ public class FLV {
 		this.interrupted = interrupted;
 	}
 
-	public boolean init() {
-		Message msg = new Message();
-		Bundle bundle = new Bundle();
-		bundle.putInt("Progress", -1);
-		msg.setData(bundle);
-		handler.sendMessage(msg);
+	public void init() {
 		flvs = dir.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File arg0) {
@@ -77,7 +78,7 @@ public class FLV {
 
 		});
 		if (flvs.length == 0)
-			return false;
+			handler.sendEmptyMessage(FLV.ERROR_NO_FILES);
 		Arrays.sort(flvs, new Comparator<File>() {
 			@Override
 			public int compare(File arg0, File arg1) {
@@ -89,7 +90,8 @@ public class FLV {
 			}
 
 		});
-		File index = new File(dir, "index.json");
+        handler.sendEmptyMessage(FLV.GET_SEGMENTS_INFO);
+        File index = new File(dir, "index.json");
 		String s = "";
 		FileInputStream fileInputStream;
 		try {
@@ -120,7 +122,7 @@ public class FLV {
 								duration = (Long) segment_map.get("duration");
 							segment_list.add(duration);
 						}
-						return true;
+						return;
 					} catch (SyntaxException e) {
 						e.printStackTrace();
 					}
@@ -133,7 +135,7 @@ public class FLV {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		return false;
+		handler.sendEmptyMessage(FLV.ERROR_GET_SEGMENTS);
 	}
 
 	private long parseLong(byte[] bs, int digits) {
@@ -220,15 +222,12 @@ public class FLV {
 		new Thread() {
 			@Override
 			public void run() {
+                init();
 				Message msg;
 				Bundle bundle;
 				try {
 					if(interrupted) {
-						msg = new Message();
-						bundle = new Bundle();
-						bundle.putInt("Progress", -2);
-						msg.setData(bundle);
-						handler.sendMessage(msg);
+                        handler.sendEmptyMessage(FLV.MERGE_CANCEL);
 						deleteDes();
 						return;
 					}
@@ -242,11 +241,11 @@ public class FLV {
 					bundle.putInt("Progress", 0);
 					bundle.putInt("Count", flvs.length);
 					msg.setData(bundle);
+                    msg.what = FLV.MERGING;
 					handler.sendMessage(msg);
 					byte[] head = new byte[100];
 					bis.read(head, 0, FLV_HEADER_LEN + PRE_TAG_SIZE_LEN);
 					bos.write(head, 0, FLV_HEADER_LEN + PRE_TAG_SIZE_LEN);
-					System.out.println("Merge " + flvs[0].getName() + "1 of " + flvs.length + "...");
 					removeScript(bis);
 					byte[] buf = new byte[buf_size];
 					int len = 0;
@@ -255,11 +254,7 @@ public class FLV {
 					bis.close();
 					for (int i = 1; i < flvs.length; i++) {
 						if(interrupted) {
-							msg = new Message();
-							bundle = new Bundle();
-							bundle.putInt("Progress", -2);
-							msg.setData(bundle);
-							handler.sendMessage(msg);
+							handler.sendEmptyMessage(FLV.MERGE_CANCEL);
 							deleteDes();
 							return;
 						}
@@ -269,7 +264,8 @@ public class FLV {
 						bundle.putInt("Progress", (int)(i*1.0/flvs.length*100));
 						bundle.putInt("Count", flvs.length);
 						msg.setData(bundle);
-						handler.sendMessage(msg);
+                        msg.what = FLV.MERGING;
+                        handler.sendMessage(msg);
 						fis = new FileInputStream(flvs[i]);
 						bis = new BufferedInputStream(fis);
 						removeHeader(bis);
@@ -295,6 +291,7 @@ public class FLV {
 							bos.write(pts, 0, PRE_TAG_SIZE_LEN);
 						}
 						bis.close();
+                        fis.close();
 					}
 					bos.flush();
 					bos.close();
@@ -304,8 +301,10 @@ public class FLV {
 					bundle.putInt("Progress", (int)(flvs.length*1.0/flvs.length*100));
 					bundle.putInt("Count", flvs.length);
 					msg.setData(bundle);
+                    msg.what = FLV.MERGING;
 					handler.sendMessage(msg);
 				} catch (Exception e) {
+                    handler.sendEmptyMessage(ERROR_WRITE);
 					e.printStackTrace();
 				}
 			}

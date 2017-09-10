@@ -8,12 +8,12 @@
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
-        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable\\abc_tab_indicator_material.xml"
-    },
-    {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
@@ -92,6 +92,10 @@
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\video_listview_item_cover_bg.xml",
+        "source": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\src\\main\\res\\drawable\\video_listview_item_cover_bg.xml"
+    },
+    {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
@@ -145,6 +149,6 @@
     },
     {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\video_listview_bg.xml",
-        "source": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\src\\main\\res\\layout\\activity_main\\drawable\\video_listview_bg.xml"
+        "source": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\src\\main\\res\\drawable\\video_listview_bg.xml"
     }
 ]

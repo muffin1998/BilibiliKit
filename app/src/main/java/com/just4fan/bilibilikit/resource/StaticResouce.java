@@ -11,6 +11,7 @@ import java.io.File;
 public class StaticResouce {
     public static Bitmap cover;
     public static File cachePath;
+    public static File coverPath;
     public static File videoPath;
     public static int doubleClickSpan;
 }

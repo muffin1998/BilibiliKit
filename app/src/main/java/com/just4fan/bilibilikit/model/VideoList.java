@@ -37,13 +37,17 @@ public class VideoList {
     private List<VLViewItem> vlViewItemList;
     VLViewItem parent;
     List<File> paths;
-    Handler handler;
+    Handler coverUpdateHandler;
+    Handler coverSaveHandler;
     int type;
     int sub_type;
-    public VideoList(Handler handler) {
+
+    public VideoList(Handler handler, Handler coverSaveHandler) {
         this();
-        this.handler = handler;
+        this.coverUpdateHandler = handler;
+        this.coverSaveHandler = coverSaveHandler;
     }
+
     public VideoList() {
         paths = new ArrayList<>();
         vlViewItemList = new ArrayList<>();
@@ -54,12 +58,13 @@ public class VideoList {
         init(VideoList.MODE_APPEND);
     }
 
+
     public List<VLViewItem> getVlViewItemList() {
         return vlViewItemList;
     }
 
-    public static VideoList getVideoList(File dir, Handler handler) {
-        VideoList videoList = new VideoList(handler);
+    public static VideoList getVideoList(File dir, Handler coverUpdateHandler, Handler coverSaveHandler) {
+        VideoList videoList = new VideoList(coverUpdateHandler, coverSaveHandler);
         videoList.paths.add(dir);
         videoList.type = VideoList.TYPE_PARENT;
         videoList.init(VideoList.MODE_COVER);
@@ -90,28 +95,30 @@ public class VideoList {
                             this.vlViewItemList.add(temp);
                         break;
                     case VLViewItem.TYPE_VIDEOS:
-                        item = new VLViewItem(VLViewItem.TYPE_VIDEOS);
-                        videoList = new VideoList(handler);
+                        item = new VLViewItem(VLViewItem.TYPE_VIDEOS, coverSaveHandler);
+                        videoList = new VideoList(coverUpdateHandler, coverSaveHandler);
                         videoList.paths.add(video);
-                        Log.d(DEBUG_TAG, "VIDEOS" + video.getName());
                         videoList.type =VideoList.TYPE_SUB;
                         videoList.sub_type = VLViewItem.TYPE_VIDEOS;
                         videoList.parent = item;
                         videoList.init_sub(item, type);
-                        item.setVideoList(videoList);
-                        this.vlViewItemList.add(item);
+                        if(videoList.getVlViewItemList().size() != 0) {
+                            item.setVideoList(videoList);
+                            this.vlViewItemList.add(item);
+                        }
                         break;
                     case VLViewItem.TYPE_DRAMA:
-                        item = new VLViewItem(VLViewItem.TYPE_DRAMA);
-                        videoList = new VideoList(handler);
+                        item = new VLViewItem(VLViewItem.TYPE_DRAMA, coverSaveHandler);
+                        videoList = new VideoList(coverUpdateHandler, coverSaveHandler);
                         videoList.paths.add(video);
-                        Log.d(DEBUG_TAG, "DRAMA" + video.getName());
                         videoList.type =VideoList.TYPE_SUB;
                         videoList.sub_type = VLViewItem.TYPE_DRAMA;
                         videoList.parent = item;
                         videoList.init_sub(item, type);
-                        item.setVideoList(videoList);
-                        this.vlViewItemList.add(item);
+                        if(videoList.getVlViewItemList().size() != 0) {
+                            item.setVideoList(videoList);
+                            this.vlViewItemList.add(item);
+                        }
                         break;
                     default:
                         break;
@@ -172,7 +179,7 @@ public class VideoList {
                         File file = new File(StaticResouce.cachePath, s.hashCode() + "");
                         if(file.exists()) {
                             item.setCover_map(BitmapFactory.decodeFile(file.getAbsolutePath()));
-                            handler.sendEmptyMessage(1);
+                            coverUpdateHandler.sendEmptyMessage(1);
                             return;
                         }
                         FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -182,14 +189,14 @@ public class VideoList {
                             fileOutputStream.write(bytes, 0, len);
                         }
                         item.setCover_map(BitmapFactory.decodeFile(file.getAbsolutePath()));
-                        handler.sendEmptyMessage(1);
+                        coverUpdateHandler.sendEmptyMessage(1);
                     }catch (IOException e) {
                         e.printStackTrace();
                     }
                 }catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                handler.sendEmptyMessage(0);
+                coverUpdateHandler.sendEmptyMessage(0);
             }
         }.start();
     }
@@ -227,7 +234,8 @@ public class VideoList {
                                     (long)map.get("total_bytes"),
                                     (long)map.get("danmaku_count"),
                                     (String)map.get("type_tag"),
-                                    (boolean)map.get("is_completed"));
+                                    (boolean)map.get("is_completed"),
+                                    coverSaveHandler);
                             vlViewItem.parts_dir = new File(part, (String)map.get("type_tag"));
                             Log.d(DEBUG_TAG, vlViewItem.parts_dir.getAbsolutePath());
                             getCover(cover0, parent);
@@ -247,7 +255,8 @@ public class VideoList {
                                     (long)map.get("total_bytes"),
                                     (long)map.get("danmaku_count"),
                                     (String)map.get("type_tag"),
-                                    (boolean)map.get("is_completed"));
+                                    (boolean)map.get("is_completed"),
+                                    coverSaveHandler);
                             vlViewItem.parts_dir = new File(part, (String)map.get("type_tag"));
                             Log.d(DEBUG_TAG, vlViewItem.parts_dir.getAbsolutePath());
                             getCover(cover, vlViewItem);
@@ -265,7 +274,8 @@ public class VideoList {
                                     (long) map.get("total_bytes"),
                                     (long) map.get("danmaku_count"),
                                     (String) map.get("type_tag"),
-                                    (boolean) map.get("is_completed"));
+                                    (boolean) map.get("is_completed"),
+                                    coverSaveHandler);
                             vlViewItem.parts_dir = new File(part, (String)map.get("type_tag"));
                             Log.d(DEBUG_TAG, vlViewItem.parts_dir.getAbsolutePath());
                             getCover(cover, vlViewItem);
@@ -288,7 +298,8 @@ public class VideoList {
         return null;
     }
 
-    public void setHandler(Handler handler) {
-        this.handler = handler;
+    public void setHandler(Handler coverUpdateHandler, Handler coverSaveHandler) {
+        this.coverSaveHandler = coverSaveHandler;
+        this.coverUpdateHandler = coverUpdateHandler;
     }
 }
