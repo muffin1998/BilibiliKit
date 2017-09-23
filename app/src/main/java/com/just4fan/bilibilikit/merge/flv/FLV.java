@@ -3,6 +3,8 @@ package com.just4fan.bilibilikit.merge.flv;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.style.TtsSpan;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +24,7 @@ public class FLV {
 	final static String msg1 = "Read Exception ";
 	final static int FLV_HEADER_LEN = 9;
 	final static int PRE_TAG_SIZE_LEN = 4;
-	final static int TAG_TYPE_LEN = 1;
+	final static int TAG_TYPE_LEN = 0x1;
 	final static int DATA_SIZE_LEN = 3;
 	final static int TIMESTAMP_LEN = 4;
 	final static int STREAM_ID_LEN = 3;
@@ -38,6 +40,7 @@ public class FLV {
     public final static int GET_SEGMENTS_INFO =  0x0;
     public final static int MERGING = 0x1;
 	boolean interrupted = false;
+	String suffix;
 	File dir;
 	File des;
 	File[] flvs;
@@ -48,7 +51,7 @@ public class FLV {
 		segment_list = new ArrayList<>();
 		this.dir = dir;
 		this.des = des;
-	}
+    }
 
 	private void deleteDes() {
 		if(des.exists())
@@ -67,7 +70,7 @@ public class FLV {
 		this.interrupted = interrupted;
 	}
 
-	public void init() {
+	public boolean init() {
 		flvs = dir.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File arg0) {
@@ -77,13 +80,32 @@ public class FLV {
 			}
 
 		});
-		if (flvs.length == 0)
-			handler.sendEmptyMessage(FLV.ERROR_NO_FILES);
+		if (flvs.length != 0) {
+            suffix = ".blv";
+        }
+        else {
+            flvs = dir.listFiles(new FileFilter() {
+                @Override
+                public boolean accept(File arg0) {
+                    if (arg0.getName().endsWith("flv"))
+                        return true;
+                    return false;
+                }
+
+            });
+            if(flvs.length != 0) {
+                suffix = ".flv";
+            }
+            else {
+                handler.sendEmptyMessage(FLV.ERROR_NO_FILES);
+                return false;
+            }
+        }
 		Arrays.sort(flvs, new Comparator<File>() {
 			@Override
 			public int compare(File arg0, File arg1) {
-				String s1 = arg0.getName().replace(".blv", "");
-				String s2 = arg1.getName().replace(".blv", "");
+				String s1 = arg0.getName().replace(suffix, "");
+				String s2 = arg1.getName().replace(suffix, "");
 				if (Integer.parseInt(s1) > Integer.parseInt(s2))
 					return 1;
 				return -1;
@@ -122,7 +144,7 @@ public class FLV {
 								duration = (Long) segment_map.get("duration");
 							segment_list.add(duration);
 						}
-						return;
+						return true;
 					} catch (SyntaxException e) {
 						e.printStackTrace();
 					}
@@ -136,6 +158,7 @@ public class FLV {
 			e.printStackTrace();
 		}
 		handler.sendEmptyMessage(FLV.ERROR_GET_SEGMENTS);
+        return false;
 	}
 
 	private long parseLong(byte[] bs, int digits) {
@@ -222,7 +245,8 @@ public class FLV {
 		new Thread() {
 			@Override
 			public void run() {
-                init();
+                if(!init())
+                    return;
 				Message msg;
 				Bundle bundle;
 				try {

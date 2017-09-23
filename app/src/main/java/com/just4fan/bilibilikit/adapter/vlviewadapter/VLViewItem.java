@@ -3,6 +3,7 @@ package com.just4fan.bilibilikit.adapter.vlviewadapter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.util.Log;
 
 import com.just4fan.bilibilikit.resource.StaticResouce;
 import com.just4fan.bilibilikit.model.VideoList;
@@ -25,6 +26,7 @@ public class VLViewItem {
     public static final int TYPE_VIDEOS = 0x2;
     public static final int TYPE_DRAMA = 0x3;
     public int type;
+    public String v_type;
     public String avid;
     public String title;
     public String cover;
@@ -40,6 +42,10 @@ public class VLViewItem {
         cover_map = StaticResouce.cover;
         this.coverSaveHandler = coverSaveHandler;
         this.type = type;
+    }
+
+    public void setV_type(String v_type) {
+        this.v_type = v_type;
     }
 
     public VLViewItem(long avid, String title, String cover, long size, long danmaku_count, String type_tag, boolean is_completed, Handler coverSaveHandler) {
@@ -63,11 +69,21 @@ public class VLViewItem {
         new Thread() {
             @Override
             public void run() {
+                File out;
+                String[] split = cover.split("\\.");
+                if(split.length > 0) {
+                    String cover_name = avid + "." + split[split.length - 1];
+                    out = new File(StaticResouce.coverPath, cover_name);
+                }
+                else {
+                    coverSaveHandler.sendEmptyMessage(0);
+                    return;
+                }
                 File cache = new File(StaticResouce.cachePath, cover.hashCode() + "");
                 if(cache.exists()) {
                     try {
                         FileInputStream fileInputStream = new FileInputStream(cache);
-                        FileOutputStream fileOutputStream = new FileOutputStream(new File(StaticResouce.coverPath, cover.hashCode() + ""));
+                        FileOutputStream fileOutputStream = new FileOutputStream(out);
                         byte[] buf = new byte[512];
                         int len;
                         try {
@@ -91,8 +107,7 @@ public class VLViewItem {
                         URL url = new URL(s);
                         try {
                             InputStream inputStream = url.openStream();
-                            File file = new File(StaticResouce.coverPath, s.hashCode() + ".jpg");
-                            FileOutputStream fileOutputStream = new FileOutputStream(file);
+                            FileOutputStream fileOutputStream = new FileOutputStream(out);
                             int len;
                             byte[] bytes = new byte[512];
                             while((len = inputStream.read(bytes, 0, 512)) != -1) {

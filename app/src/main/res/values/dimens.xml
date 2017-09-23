@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="video_listview_item_title_text">14dp</dimen>
-    <dimen name="video_listview_item_secondary_text">10dp</dimen>
+    <dimen name="video_listview_item_title_text">14sp</dimen>
+    <dimen name="video_listview_item_secondary_text">10sp</dimen>
+    <dimen name="video_listview_item_image_text_margin">3dp</dimen>
+    <dimen name="video_listview_item_icon_size">8dp</dimen>
     <dimen name="video_listview_item_margin">5dp</dimen>
     <dimen name="video_listview_item_padding">5dp</dimen>
     <dimen name="video_listview_item_cover_width">120dp</dimen>

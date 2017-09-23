@@ -8,6 +8,14 @@
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
+        "source": "C:\\Android\\.android\\build-cache\\202981eca521e2a597021afc1819bc9fc3027b42\\output\\res\\anim\\design_fab_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e008e2670d6976233364fe11075f202051fcdec2\\output\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
@@ -24,12 +32,20 @@
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Android\\.android\\build-cache\\e008e2670d6976233364fe11075f202051fcdec2\\output\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_out.xml",
+        "source": "C:\\Android\\.android\\build-cache\\202981eca521e2a597021afc1819bc9fc3027b42\\output\\res\\anim\\design_fab_out.xml"
     },
     {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",

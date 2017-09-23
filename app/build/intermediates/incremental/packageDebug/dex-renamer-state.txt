@@ -1,4 +1,4 @@
-#Sun Sep 10 18:54:02 CST 2017
+#Sat Sep 23 14:15:26 CST 2017
 base.0=C\:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c8813b3d928ca6612de100d9288d5e7612f1aa20
 renamed.1=classes.dex
 renamed.0=classes2.dex

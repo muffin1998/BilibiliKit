@@ -72,6 +72,10 @@
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png",
+        "source": "C:\\Android\\.android\\build-cache\\e008e2670d6976233364fe11075f202051fcdec2\\output\\res\\drawable-xxxhdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_star_black_48dp.png",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_star_black_48dp.png"
     },
@@ -102,5 +106,9 @@
     {
         "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_star_black_16dp.png",
         "source": "C:\\Android\\.android\\build-cache\\e6a93b7c04b682d0827fdfca92a69f376593b157\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "C:\\Users\\chuiq\\AndroidStudioProjects\\BiliBiliKit\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\design_ic_visibility.png",
+        "source": "C:\\Android\\.android\\build-cache\\e008e2670d6976233364fe11075f202051fcdec2\\output\\res\\drawable-xxxhdpi-v4\\design_ic_visibility.png"
     }
 ]

@@ -19,6 +19,6 @@
     <string name="merge_video_dialog_cancelling">正在取消...</string>
     <string name="merge_video_dialog_cancel_success">已取消</string>
     <string name="merge_video_dialog_cancel_fail">取消失败</string>
-    <string name="double_back_exit">在按一次返回键退出程序</string>
+    <string name="double_back_exit">在按一次退出</string>
     <string name="merge_completed_dialog_button_positive">确定</string>
 </resources>

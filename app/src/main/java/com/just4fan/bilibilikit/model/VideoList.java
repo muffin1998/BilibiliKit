@@ -79,7 +79,6 @@ public class VideoList {
             for (File video : dirs) {
                 VLViewItem item;
                 VideoList videoList;
-                //Log.d(DEBUG_TAG, video.getName());
                 File[] parts = video.listFiles();
                 if (parts == null || parts.length == 0)
                     continue;
@@ -91,14 +90,16 @@ public class VideoList {
                 switch (type) {
                     case VLViewItem.TYPE_VIDEO:
                         VLViewItem temp = getVLViewItem(parts[0], null, type);
-                        if (temp != null)
+                        if (temp != null) {
+
                             this.vlViewItemList.add(temp);
+                        }
                         break;
                     case VLViewItem.TYPE_VIDEOS:
                         item = new VLViewItem(VLViewItem.TYPE_VIDEOS, coverSaveHandler);
                         videoList = new VideoList(coverUpdateHandler, coverSaveHandler);
                         videoList.paths.add(video);
-                        videoList.type =VideoList.TYPE_SUB;
+                        videoList.type = VideoList.TYPE_SUB;
                         videoList.sub_type = VLViewItem.TYPE_VIDEOS;
                         videoList.parent = item;
                         videoList.init_sub(item, type);
@@ -130,7 +131,6 @@ public class VideoList {
 
     protected void init_sub(VLViewItem parent, int type) {
         for(File dir : paths) {
-            Log.d(DEBUG_TAG, "DIR:" + dir.getName());
             File[] parts = dir.listFiles();
             if (parts == null || parts.length == 0)
                 return;
@@ -143,7 +143,6 @@ public class VideoList {
     }
 
     public void Refresh() {
-        Log.d(DEBUG_TAG, "Refresh Start," + type);
         if(type == VideoList.TYPE_PARENT)
             init(MODE_COVER);
         else if(type == VideoList.TYPE_SUB) {
@@ -222,22 +221,26 @@ public class VideoList {
                         Map<String, Object> map = Json.getRoot();
                         VLViewItem vlViewItem;
                         if(type == VLViewItem.TYPE_DRAMA) {
-                            //Log.d(DEBUG_TAG, map.toString());
                             Map<String, Object> ep = (Map)map.get("ep");
                             long avid = (long)ep.get("av_id");
                             String cover0 = (String)map.get("cover");
                             String cover = (String)ep.get("cover");
                             String title = ep.get("index") + ":" + ep.get("index_title");
+                            String type_tag = (String)map.get("type_tag");
                             vlViewItem = new VLViewItem(avid,
                                     title,
                                     cover,
                                     (long)map.get("total_bytes"),
                                     (long)map.get("danmaku_count"),
-                                    (String)map.get("type_tag"),
+                                    type_tag,
                                     (boolean)map.get("is_completed"),
                                     coverSaveHandler);
                             vlViewItem.parts_dir = new File(part, (String)map.get("type_tag"));
-                            Log.d(DEBUG_TAG, vlViewItem.parts_dir.getAbsolutePath());
+                            String[] split = type_tag.split("\\.");
+                            if(split.length > 2)
+                                vlViewItem.setV_type(split[1]);
+                            else
+                                vlViewItem.setV_type("unknow");
                             getCover(cover0, parent);
                             getCover(cover, vlViewItem);
                             if(parent != null) {
@@ -249,16 +252,21 @@ public class VideoList {
                             Map<String, Object> page_data = (Map)map.get("page_data");
                             String cover = (String)map.get("cover");
                             String title = (String)page_data.get("part");
+                            String type_tag = (String)map.get("type_tag");
                             vlViewItem = new VLViewItem((long) map.get("avid"),
                                     title,
                                     cover,
                                     (long)map.get("total_bytes"),
                                     (long)map.get("danmaku_count"),
-                                    (String)map.get("type_tag"),
+                                    type_tag,
                                     (boolean)map.get("is_completed"),
                                     coverSaveHandler);
                             vlViewItem.parts_dir = new File(part, (String)map.get("type_tag"));
-                            Log.d(DEBUG_TAG, vlViewItem.parts_dir.getAbsolutePath());
+                            String[] split = type_tag.split("\\.");
+                            if(split.length > 2)
+                                vlViewItem.setV_type(split[1]);
+                            else
+                                vlViewItem.setV_type("unknow");
                             getCover(cover, vlViewItem);
                             getCover(cover, parent);
                             if(parent != null) {
@@ -268,16 +276,21 @@ public class VideoList {
                         }
                         else if(type == VLViewItem.TYPE_VIDEO){
                             String cover =  (String) map.get("cover");
+                            String type_tag = (String)map.get("type_tag");
                             vlViewItem = new VLViewItem((long) map.get("avid"),
                                     (String) map.get("title"),
                                     cover,
                                     (long) map.get("total_bytes"),
                                     (long) map.get("danmaku_count"),
-                                    (String) map.get("type_tag"),
+                                    type_tag,
                                     (boolean) map.get("is_completed"),
                                     coverSaveHandler);
-                            vlViewItem.parts_dir = new File(part, (String)map.get("type_tag"));
-                            Log.d(DEBUG_TAG, vlViewItem.parts_dir.getAbsolutePath());
+                            vlViewItem.parts_dir = new File(part, type_tag);
+                            String[] split = type_tag.split("\\.");
+                            if(split.length > 2)
+                                vlViewItem.setV_type(split[1]);
+                            else
+                                vlViewItem.setV_type("unknow");
                             getCover(cover, vlViewItem);
                         }
                         else

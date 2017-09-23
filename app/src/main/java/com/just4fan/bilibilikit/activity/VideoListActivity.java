@@ -240,13 +240,14 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
         VLViewItem item = vlviewItemList.get((int)l);
-        Log.d(DEBUG_TAG, "Clicked " + item.type);
         if(item.type == VLViewItem.TYPE_VIDEOS || item.type == VLViewItem.TYPE_DRAMA) {
             layout.setRefreshing(true);
             parent_vi = vlviewItemList;
             parent_vl = videoList;
             videoList = item.getVideoList();
+            vlviewItemList = videoList.getVlViewItemList();
             //videoList.setHandler();
             video_listview.setAdapter(new VLViewAdpater(this, videoList.getVlViewItemList()));
             layout.setRefreshing(false);
@@ -263,14 +264,15 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        //Log.d(DEBUG_TAG, item.getItemId() + "");
         if(item.getOrder() == 0) {
-            mergeProgressDialog.show();
-            progressBar = (ProgressBar) mergeProgressDialog.findViewById(R.id.video_merge_progressBar);
-            progressMessage = (TextView) mergeProgressDialog.findViewById(R.id.video_merge_message);
-            flv = new FLV(curClicked.parts_dir, new File(StaticResouce.videoPath, curClicked.title + ".flv"));
-            flv.setHandler(mergeProgessHandler);
-            flv.Merge();
+            if("flv".equals(curClicked.v_type) || "blv".equals(curClicked.v_type)) {
+                mergeProgressDialog.show();
+                progressBar = (ProgressBar) mergeProgressDialog.findViewById(R.id.video_merge_progressBar);
+                progressMessage = (TextView) mergeProgressDialog.findViewById(R.id.video_merge_message);
+                flv = new FLV(curClicked.parts_dir, new File(StaticResouce.videoPath, curClicked.title + ".flv"));
+                flv.setHandler(mergeProgessHandler);
+                flv.Merge();
+            }
         }
         else if(item.getOrder() == 1) {
             curClicked.coverSave();
@@ -319,6 +321,7 @@ public class VideoListActivity extends AppCompatActivity implements AdapterView.
         if(requestCode == this.requestCode) {
             if(grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, R.string.write_external_storage_denied, Toast.LENGTH_LONG).show();
+                finish();
             }
         }
     }
